@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Meu formulário</title>
+    </head>
+    <body>
+        <form id="form1" action="" target="_blank" method="post">
+            login:<br/>
+            <input id="login" type="text" name="login"  autofocus required><br/><br/>
+            Senha:<br/>
+            <input id="senha" type="password" name="senha" required><br/>         
+            <input id="range" type="range" name="range" value="0" Disabled><nivel id="nivel" name="nivel">0</nivel><br/>
+            <input type="submit" value="Testar senha"/>     
+        </form>
+    </body>
+</html>
+
+<script>
+
+let myForm = document.getElementById("form1");
+myForm.addEventListener("submit", function(event){
+    event.preventDefault();
+	psw = myForm.elements.namedItem("senha").value;		
+	nivel = document.getElementById("nivel");    	
+	forca = 0;
+	
+   	if(psw.match(/[a-z]/)){
+		forca += 25;
+	}
+	if(psw.match(/[A-Z]/)){
+		forca += 25;
+	}
+	if(psw.match(/[0-9]/)){
+		forca += 25;
+	}
+	if(psw.match(/\W+/)){
+		forca += 25;
+	}
+
+	nivel.innerText = forca;
+   
+	switch(forca){
+		case 0: alert("Impossível prosseguir");
+		break;
+		case 25: alert("Senha muito fraca");
+		break;
+		case 50: alert("Senha fraca");
+		break;
+		case 75: alert("Quase lá!");
+		break;
+		case 100: alert("Senha forte!!!");
+		break;
+   }
+   
+	myForm.elements.namedItem("range").value=forca;
+   
+    //myForm.submit();
+});
+
+</script>
