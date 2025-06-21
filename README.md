@@ -1,2 +1,2 @@
-# nivel-de-senha
-verificador de nivel de senha
+# Nível de senha
+Reproduz verificação de nível de senha fornecida pelo usuário. 
